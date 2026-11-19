@@ -1,0 +1,42 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>NotebookLM</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h2>Asisten Belajar AI</h2>
+  <p>Selamat datang di NotebookLM Mobile</p>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Buat Notebook Baru
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Kelola materi pembelajaran Anda.
+      <ion-button expand="block"
+                  (click)="buatNotebook()">
+        Buat Notebook
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" color="success"
+              (click)="uploadPDF()">
+    Upload Dokumen PDF
+  </ion-button>
+
+  <ion-button expand="block" color="tertiary"
+              (click)="bukaChat()">
+    AI Chat
+  </ion-button>
+
+  <ion-button expand="block" color="medium">
+    Riwayat Notebook
+  </ion-button>
+
+</ion-content>
