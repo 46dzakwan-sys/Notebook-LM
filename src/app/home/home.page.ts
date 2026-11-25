@@ -1,18 +1,46 @@
-
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import {
+  AlertController,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonButton,
+} from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: false
+  standalone: true,
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonButton,
+  ],
 })
 export class HomePage {
 
-  constructor(
-    private alertController: AlertController
-  ) {}
+  constructor(private alertController: AlertController) {}
+
+  async tampilkanPesan(judul: string) {
+    const alert = await this.alertController.create({
+      header: 'Sukses',
+      message: 'Notebook berhasil dibuat: ' + judul,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   async buatNotebook() {
     const alert = await this.alertController.create({
@@ -29,12 +57,11 @@ export class HomePage {
         {
           text: 'Simpan',
           handler: (data) => {
-            alertControllerMessage(data.judul);
+            this.tampilkanPesan(data.judul);
           }
         }
       ]
     });
-
     await alert.present();
   }
 
@@ -44,7 +71,6 @@ export class HomePage {
       message: 'Fitur pemilihan dokumen PDF akan dikembangkan.',
       buttons: ['OK']
     });
-
     await alert.present();
   }
 
@@ -54,12 +80,6 @@ export class HomePage {
       message: 'Fitur AI Chat akan dikembangkan.',
       buttons: ['OK']
     });
-
     await alert.present();
   }
 }
-
-function alertControllerMessage(judul: string) {
-  alert('Notebook berhasil dibuat: ' + judul);
-}
-
